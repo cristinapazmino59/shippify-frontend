@@ -1,0 +1,44 @@
+.container {
+    display: flex;
+    justify-content: space-between left;
+    align-items: center;
+    padding: 0% 1% 0% 1%;
+    font-family: var(--generalFont);
+    font-size: 1.2em;
+}
+
+.title {
+    font-family: var(--titleFont);
+    font-size: 3em;
+    letter-spacing: 0.2em;
+    
+}
+
+.button {
+    font-weight: bold;
+    color: var(--buttonFontColor);
+    height: auto;
+    width: auto;
+    margin: 3%;
+    padding: 0.6%;
+    border: none;
+    border-radius: 9%;
+    box-shadow: var(--buttonShadow);
+    background: var(--buttonBackgroundColor);
+}
+
+.notesGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    grid-row-gap: 4%;
+    grid-column-gap: 3%;
+    text-align: left;
+}
+
+.noNotesMessage {
+    margin-left: 3%;
+    font-size: 3em;
+    font-family: var(--titleFont);
+    color: #091540;
+}

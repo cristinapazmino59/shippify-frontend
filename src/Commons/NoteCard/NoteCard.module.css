@@ -1,0 +1,50 @@
+.noteCard {
+    list-style: none;
+    width: 100%;
+    height: auto;
+    margin: 5%;
+    padding: 2% 1% 2% 5%;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: grey;
+    border-width: 0.1em;
+    background-color: hsl(31, 51%, 90%);
+    transition: all 100ms;
+    display: grid;
+    grid-template-columns: 0.5fr 1.2fr 0.8fr;
+    grid-template-areas:
+    "area1 area2 ."
+    "area1 area3 ."
+    ".      .     area4"
+}
+
+.noteCard:hover {
+    transform: scale(1.08);
+    opacity: 1;
+    transition-duration: 1s;
+}
+
+.stickyNote {
+    grid-area: area1;
+    font-size: 5em;
+}
+
+.title {
+    grid-area: area2;
+    font-family: var(--titleFont);
+    font-size: 1.5em;
+}
+
+.date {
+    grid-area: area3;
+}
+
+.iconGrid {
+    grid-area: area4;
+    font-size: 1.2em;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 1%;
+    padding: 0;
+    align-content: space-around;
+}

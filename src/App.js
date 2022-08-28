@@ -1,23 +1,17 @@
-import logo from './logo.svg';
+import { Route, Routes } from 'react-router-dom';
+import Header from './Components/Header/Header';
+import ActiveNotes from './Components/ActiveNotes/ActiveNotes';
+import ArchivedNotes from './Components/ArchivedNotes/ArchivedNotes';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <Routes>
+        <Route path='/mynotes/:userId' element={<ActiveNotes />}/>
+        <Route path='/archived_notes/:userId' element={<ArchivedNotes />}/>
+      </Routes>
     </div>
   );
 }
