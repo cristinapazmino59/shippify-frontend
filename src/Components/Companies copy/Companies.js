@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Formik, Field, Form } from "formik";
-import NoteCard from '../../Commons/NoteCard/NoteCard';
+import NoteCard from '../../Commons/VehicleCard/NoteCard';
 import CreateNote from '../CreateNote/CreateNote';
-import s from './ActiveNotes.module.css';
+import s from './Companies.module.css';
 
-const ActiveNotes = () => {
+const Companies = () => {
     const [ showCreateNote, setShowCreateNote ] = useState(false);
     const [ activeNotes, setActiveNotes ] = useState([]);
     const [ isFiltered, setIsFiltered ] = useState(false);
@@ -26,7 +26,7 @@ const ActiveNotes = () => {
             <CreateNote showCreateNote={showCreateNote} setShowCreateNote={setShowCreateNote}/>
             <div className={s.container}>
                 <h1 className={s.title}>
-                    My Notes
+                    Our companies
                 </h1>
                 <button className={s.button} onClick={handleClick}>
                     Create note
@@ -83,4 +83,4 @@ const ActiveNotes = () => {
     )
 }
 
-export default ActiveNotes;
+export default Companies;

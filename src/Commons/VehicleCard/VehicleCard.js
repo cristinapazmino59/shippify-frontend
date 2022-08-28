@@ -5,9 +5,9 @@ import { FaStickyNote, FaRegTrashAlt, FaArchive, FaPencilAlt, FaWindowRestore } 
 import CreateNote from '../../Components/CreateNote/CreateNote';
 import ViewNote from '../../Components/ViewNote/ViewNote';
 import { archive, restore, eliminate } from '../../hooks/alert';
-import s from "./NoteCard.module.css";
+import s from "./VehicleCard.module.css";
 
-const NoteCard = ({ note }) => {
+const VehicleCard = ({ vehicle }) => {
     const { updateNote } = useContext(NoteContext)
     const [ showCreateNote, setShowCreateNote ] = useState(false);
     const [ showViewNote, setShowViewNote ] = useState(false);
@@ -15,34 +15,27 @@ const NoteCard = ({ note }) => {
     const path = useLocation().pathname.slice(1,15);
    
     const handleView = () => {
-        updateNote(note);
+        updateNote(vehicle);
         setShowViewNote(true);
     }
 
     const handleArchive = () => {
         const notes = JSON.parse(localStorage.getItem("notes"))
-        const index = notes.findIndex(storagedNote => storagedNote.id === note.id)    
+        const index = notes.findIndex(storagedNote => storagedNote.id === vehicle.id)    
         notes[index].isArchived = true; 
         localStorage.setItem("notes", JSON.stringify(notes));
         archive();
     }
 
-    const handleRestore = () => {
-        const notes = JSON.parse(localStorage.getItem("notes"))
-        const index = notes.findIndex(storagedNote => storagedNote.id === note.id)    
-        notes[index].isArchived = false; 
-        localStorage.setItem("notes", JSON.stringify(notes));
-        restore();
-    }
     
     const handleEdit = () => {
-        updateNote(note);
+        updateNote(vehicle);
         setEditNote(true);
         setShowCreateNote(true);
     }
 
     const handleDelete = () => {
-        eliminate(note);
+        eliminate(vehicle);
     }
 
     return (
@@ -51,12 +44,9 @@ const NoteCard = ({ note }) => {
             <ViewNote showViewNote={showViewNote} setShowViewNote={setShowViewNote} />
             <div className= {s.noteCard}>
                 <FaStickyNote className={s.stickyNote} onClick={handleView}/>
-                <div className={s.title}>{note.title}</div>
-                <div className={s.date}>{`Last updated: ${note.date}`}</div>
+                <div className={s.title}>{vehicle.type}</div>
+                <div className={s.date}>{`Last updated: ${vehicle.driverId}`}</div>
                 <div className={s.iconGrid}>
-                    {path === "archived_notes" 
-                    ? <FaWindowRestore onClick={handleRestore}/>
-                    : <FaArchive onClick={handleArchive}/>}
                     <FaPencilAlt onClick={handleEdit}/>
                     <FaRegTrashAlt onClick={handleDelete}/>
                 </div>
@@ -65,4 +55,4 @@ const NoteCard = ({ note }) => {
     )
 }
 
-export default NoteCard;
+export default VehicleCard;

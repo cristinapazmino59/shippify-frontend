@@ -2,7 +2,8 @@
 
 :root {
   --hoverColor: #ef404b;
-  --mainColor: #505050; /* Primary color */
+  --mainColor: #505050; 
+  --tittleColor: #000000; 
   --buttonBackgroundColor: #6504b5;
   --buttonFontColor: white; 
   --buttonShadow: 5px 5px 1px  rgba(0,0,0,0.8); 

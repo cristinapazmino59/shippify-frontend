@@ -1,16 +1,20 @@
 import { Route, Routes } from 'react-router-dom';
-import Header from './Components/Header/Header';
-import ActiveNotes from './Components/ActiveNotes/ActiveNotes';
+import Navbar from './Components/Navbar/Navbar';
+import Companies from './Components/Companies/Companies';
+import Vehicles from './Components/Vehicles/Vehicles';
 import ArchivedNotes from './Components/ArchivedNotes/ArchivedNotes';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <Header />
+      <Navbar />
       <Routes>
-        <Route path='/mynotes/:userId' element={<ActiveNotes />}/>
-        <Route path='/archived_notes/:userId' element={<ArchivedNotes />}/>
+        <Route path='/companies' element={<Companies />}/>
+{/*         <Route path='/drivers' element={<Drivers />}/> */}
+        <Route path='/vehicles' element={<Vehicles />}/>
+        {/* <Route path='/mynotes/:userId' element={<ActiveNotes />}/>
+        <Route path='/archived_notes/:userId' element={<ArchivedNotes />}/> */}
       </Routes>
     </div>
   );

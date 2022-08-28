@@ -1,6 +1,5 @@
 .container {
-    display: flex;
-    justify-content: space-between left;
+   justify-content: space-between left;
     align-items: center;
     padding: 0% 1% 0% 1%;
     font-family: var(--generalFont);
@@ -10,21 +9,29 @@
 .title {
     font-family: var(--titleFont);
     font-size: 3em;
-    letter-spacing: 0.2em;
-    
 }
 
+.menuContainer {
+    display: flex;
+    justify-content: space-around left;
+    align-items: center;
+}
+
+.menuOptions {
+    text-decoration: none;
+    color: inherit;
+    font-size: 1.2em;
+    margin-right: 5%;
+}
+
+.menuOptions:hover {
+    color: var(--hoverColor);
+}
+
+
 .button {
-    font-weight: bold;
-    color: var(--buttonFontColor);
-    height: auto;
-    width: auto;
-    margin: 3%;
-    padding: 0.6%;
-    border: none;
-    border-radius: 9%;
-    box-shadow: var(--buttonShadow);
-    background: var(--buttonBackgroundColor);
+    text-decoration: none;
+    position: inherit;
 }
 
 .notesGrid {

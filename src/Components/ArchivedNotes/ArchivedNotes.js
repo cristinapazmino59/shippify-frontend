@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import NoteCard from '../../Commons/NoteCard/NoteCard';
+import NoteCard from '../../Commons/VehicleCard/VehicleCard';
 import CreateNote from '../CreateNote/CreateNote';
 import s from './ArchivedNotes.module.css';
 
