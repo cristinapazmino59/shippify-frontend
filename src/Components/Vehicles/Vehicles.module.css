@@ -28,44 +28,40 @@
     color: var(--hoverColor);
 }
 
-
 .button {
     text-decoration: none;
     position: inherit;
 }
 
-.notesGrid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: auto;
-    grid-row-gap: 4%;
-    grid-column-gap: 3%;
-    text-align: left;
-}
-
-.noNotesMessage {
+.noVehiclesMessage {
     margin-left: 3%;
     font-size: 3em;
     font-family: var(--titleFont);
     color: #091540;
 }
 
-.form {
-    display: flex;
-    justify-content: space-between left;
-    align-items: center;
-        padding: 0% 1% 0% 1%;
+.vehiclesGrid {
+    display: grid;
+ /*    grid-template-rows: auto; */
+    grid-row-gap: 5%;
+    grid-column-gap: 5%;
+    grid-template-columns: repeat(3, 1fr);
+    text-decoration: none;
+    text-align: center;
+    margin-left: 2%;
+    margin-right: 2%;
 }
 
-.goButton {
-    font-weight: bold;
-    color: var(--buttonFontColor);
-    height: auto;
-    width: 4em;
-    margin: 0% 2% 0% 2%;
-    padding: 0.6%;
-    border: none;
-    border-radius: 9%;
-    box-shadow: var(--buttonShadow);
-    background: var(--buttonBackgroundColor);
+@media only screen and (min-width:820px) and (max-width:1100px){
+    .vehiclesGrid {
+        grid-template-columns: repeat(2, 1fr);
+        padding-bottom: 0;
+    }
 }
+
+@media (max-width:819px){
+    .vehiclesGrid {
+        grid-template-columns: 100%;
+    }
+}
+

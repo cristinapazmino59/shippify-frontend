@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { FaRegTrashAlt, FaPencilAlt } from 'react-icons/fa';
 import EditVehicle from '../../Components/EditVehicle/EditVehicle';
 import { eliminate } from '../../hooks/alert';
+import capitalizeFirst from '../../hooks/capitalize';
 import s from "./VehicleCard.module.css";
 
 const VehicleCard = ({ vehicle }) => {
@@ -19,22 +20,21 @@ const VehicleCard = ({ vehicle }) => {
         <>
             <EditVehicle showEditVehicle={showEditVehicle} setShowEditVehicle={setShowEditVehicle} vehicle={vehicle} />
             <div className= {s.vehicleCard}>
-                <div className= {s.vehicleImage}>
-                    {{
-                        bycycle: <img src={require(`../../utils/img/vehicles/bike.jpg`)} alt={'vehicle'}></img>,
-                        motorcycle: <img src={require(`../../utils/img/vehicles/motorcycle.jpg`)} alt={'vehicle'}></img>,
-                        car: <img src={require(`../../utils/img/vehicles/car.jpg`)} alt={'vehicle'}></img>,
-                        truck: <img src={require(`../../utils/img/vehicles/truck.jpg`)} alt={'vehicle'}></img>,
-                        van: <img src={require(`../../utils/img/vehicles/van.jpg`)} alt={'vehicle'}></img>,
-                    }[vehicle.type]}
-                </div>
+                {{
+                    bycycle: <img className= {s.vehicleImage} src={require(`../../utils/img/vehicles/bike.jpg`)} alt={'vehicle'}></img>,
+                    motorcycle: <img className= {s.vehicleImage} src={require(`../../utils/img/vehicles/moto.jpg`)} alt={'vehicle'}></img>,
+                    car: <img className= {s.vehicleImage} src={require(`../../utils/img/vehicles/car.jpg`)} alt={'vehicle'}></img>,
+                    truck: <img className= {s.vehicleImage} src={require(`../../utils/img/vehicles/truck.jpg`)} alt={'vehicle'}></img>,
+                    van: <img className= {s.vehicleImage} src={require(`../../utils/img/vehicles/van.jpg`)} alt={'vehicle'}></img>,
+                }[vehicle.type]}
+ 
                 <div className= {s.vehicleInfo}>
-                    <div className={s.title}>{`Type: ${vehicle.type}`}</div>
-                    <div className={s.date}>{`Color: ${vehicle.color}`}</div>
-                    <div className={s.date}>{`Plate: ${vehicle.plate}`}</div>
+                    <div>{`Type: ${capitalizeFirst(vehicle.type)}`}</div>
+                    <div>{`Color: ${capitalizeFirst(vehicle.color)}`}</div>
+                    <div>{`Plate: ${vehicle.plate.toUpperCase()}`}</div>
                 <div className={s.iconGrid}>
-                    <FaPencilAlt onClick={handleEdit}/>
-                    <FaRegTrashAlt onClick={handleDelete}/>
+                    <FaPencilAlt  className={`${s.icon}, ${s.edit}`} onClick={handleEdit}/>
+                    <FaRegTrashAlt  className={`${s.icon}, ${s.delete}`} onClick={handleDelete}/>
                 </div>
                 </div>
             </div>

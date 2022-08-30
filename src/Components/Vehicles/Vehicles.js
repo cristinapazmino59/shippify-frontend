@@ -29,18 +29,15 @@ const Vehicles = () => {
                 <div className={s.menuContainer}>
                     <Link to={`#`} className={s.menuOptions} onClick={handleClick}>Create vehicle</Link>
                     <Link to={`#`} className={s.menuOptions} onClick={handleClick}>List vehicle by driver</Link>
-            </div>
+                </div>
             </div> 
-            <div className={s.formContainer}>
- 
 
-        </div>
-            <div className={s.notesGrid}>
+            <div className={s.vehiclesGrid}>
             {vehicles
                 ? <ul>
                     {vehicles.map((vehicle, index) => <VehicleCard key={index} vehicle={vehicle}/>)}
                    </ul>
-                : <div className={s.noNotesMessage}>There are no vehicles yet</div>
+                : <div className={s.noVehiclesMessage}>There are no vehicles yet</div>
                 }
 
             </div>
