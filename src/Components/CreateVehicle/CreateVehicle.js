@@ -5,7 +5,7 @@ import { createNew } from '../../hooks/methods';
 import { create } from '../../hooks/alert';
 import s from './CreateVehicle.module.css';
 
-const CreateVehicle = ({ showCreateVehicle, setShowCreateVehicle }) => {
+const CreateVehicle = ({ showCreateVehicle, setShowCreateVehicle, driver }) => {
 
     const handleCancel = () => {
         setShowCreateVehicle(false)
@@ -41,6 +41,7 @@ const CreateVehicle = ({ showCreateVehicle, setShowCreateVehicle }) => {
                                 })}
 
                                 onSubmit={values => {
+                                    values.driverId = driver.id;
                                     createNew(`/vehicles`, values)
                                     .then(() => {
                                         create();

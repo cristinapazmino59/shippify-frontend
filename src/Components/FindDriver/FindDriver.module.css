@@ -1,0 +1,90 @@
+.backdrop {
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+}
+
+.modalContainer {
+    background-color: white;
+    display: flex ;
+    align-items: center;
+    justify-content: center;
+    max-width: 700px;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+
+.formContainer {
+    width: 100%;
+    padding: 5% 12% 5% 6%;
+    border-style: solid 1px grey;
+    color: var(--mainColor);
+    font-size: 1.5em;
+}
+
+.gridContainer {
+    display: grid;
+    grid-template-columns: 20% 80%;
+    grid-template-rows: auto;
+    column-gap: 5%;
+}
+
+.title {
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.input {
+    width: 100%;
+    height: 2em;
+    font-size: smaller;
+    padding-bottom: 2%;
+    margin-bottom: 3%;
+}
+
+.subGridContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 5%;
+    grid-template-areas:
+    " . area2 area3"
+}
+
+.button {
+    height: 3em;
+    width: 100%;
+    border: none;
+    border-radius: 5%;
+    background: var(--buttonBackgroundColor);
+    font-family: var(--generalFont);
+    color: var(--buttonFontColor);
+    font-size: large;
+    font-weight: bolder;
+    margin-top: 20%;
+}
+
+.button:hover {
+    cursor: pointer;
+    background: white;
+    color: var(--buttonBackgroundColor);
+    border: solid 1px;
+}
+
+.search{
+    margin-left: 50%;
+    grid-area: area2;
+}
+
+.cancel{
+    margin-left: 0;
+    grid-area: area3;
+}
+
+.error {
+    color: red;
+    font-size: 0.7em;
+}

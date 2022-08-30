@@ -1,13 +1,15 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { ActionContext } from '../../context/ActionContext';
 import { Link } from 'react-router-dom';
 import VehicleCard from '../../Commons/VehicleCard/VehicleCard';
-import CreateVehicle from '../CreateVehicle/CreateVehicle';
+import FindDriver from '../FindDriver/FindDriver';
 import { find }  from '../../hooks/methods';
 import s from './Vehicles.module.css';
 
 const Vehicles = () => {
     const [ vehicles, setVehicles ] = useState([]);
-    const [ showCreateVehicle, setShowCreateVehicle ] = useState(false);
+    const { isFindAction, isFind, toggleAction } = useContext(ActionContext);
+    const [ showFindDriver, setShowFindDriver ] = useState(false);
 
     useEffect(() => {
         find(`/vehicles`)
@@ -15,20 +17,26 @@ const Vehicles = () => {
         .catch(err => console.log(err));
     }, [vehicles]); 
     
-    const handleClick = () => {
-        setShowCreateVehicle(true)
+    const handleCreate= () => {
+        setShowFindDriver(true);
     };
+
+    const handleList= () => {
+        toggleAction();
+        setShowFindDriver(true);
+    };
+
     
     return (
         <>
-            <CreateVehicle showCreateVehicle={showCreateVehicle} setShowCreateVehicle={setShowCreateVehicle}/>
+            <FindDriver showFindDriver={showFindDriver} setShowFindDriver={setShowFindDriver}/>
             <div className={s.container}>
                 <h1 className={s.title}>
                     Our vehicles
                 </h1>
                 <div className={s.menuContainer}>
-                    <Link to={`#`} className={s.menuOptions} onClick={handleClick}>Create vehicle</Link>
-                    <Link to={`#`} className={s.menuOptions} onClick={handleClick}>List vehicle by driver</Link>
+                    <Link to={`#`} className={s.menuOptions} onClick={handleCreate}>Create vehicle</Link>
+                    <Link to={`#`} className={s.menuOptions} onClick={handleList}>List vehicle by driver</Link>
                 </div>
             </div> 
 

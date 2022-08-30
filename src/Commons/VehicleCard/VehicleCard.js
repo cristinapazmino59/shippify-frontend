@@ -33,8 +33,8 @@ const VehicleCard = ({ vehicle }) => {
                     <div>{`Color: ${capitalizeFirst(vehicle.color)}`}</div>
                     <div>{`Plate: ${vehicle.plate.toUpperCase()}`}</div>
                 <div className={s.iconGrid}>
-                    <FaPencilAlt  className={`${s.icon}, ${s.edit}`} onClick={handleEdit}/>
-                    <FaRegTrashAlt  className={`${s.icon}, ${s.delete}`} onClick={handleDelete}/>
+                    <FaPencilAlt  className={`${s.icon}`} onClick={handleEdit}/>
+                    <FaRegTrashAlt  className={`${s.icon} ${s.delete}`} onClick={handleDelete}/>
                 </div>
                 </div>
             </div>

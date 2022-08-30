@@ -42,13 +42,13 @@ export function eliminate(vehicle){
 }
 
 
-export function notValid(){
+export function notFound(){
   Swal.fire({
     position: 'center',
     icon: 'error',
-    title: 'Incorrect data, please try again',
+    title: 'This driver does no exist',
     showConfirmButton: false,
-    timer: 1500
+    timer: 1700
   })
 }
 
