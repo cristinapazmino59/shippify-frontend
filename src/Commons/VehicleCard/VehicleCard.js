@@ -1,37 +1,14 @@
-import { useState, useContext } from 'react';
-import { useLocation } from 'react-router-dom';
-import { NoteContext } from '../../context/NoteContext';
-import { FaStickyNote, FaRegTrashAlt, FaArchive, FaPencilAlt, FaWindowRestore } from 'react-icons/fa';
-import CreateNote from '../../Components/CreateNote/CreateNote';
-import ViewNote from '../../Components/ViewNote/ViewNote';
-import { archive, restore, eliminate } from '../../hooks/alert';
+import { useState } from 'react';
+import { FaRegTrashAlt, FaPencilAlt } from 'react-icons/fa';
+import EditVehicle from '../../Components/EditVehicle/EditVehicle';
+import { eliminate } from '../../hooks/alert';
 import s from "./VehicleCard.module.css";
 
 const VehicleCard = ({ vehicle }) => {
-    const { updateNote } = useContext(NoteContext)
-    const [ showCreateNote, setShowCreateNote ] = useState(false);
-    const [ showViewNote, setShowViewNote ] = useState(false);
-    const [ editNote, setEditNote ] = useState(false);
-    const path = useLocation().pathname.slice(1,15);
+    const [ showEditVehicle, setShowEditVehicle ] = useState(false);
    
-    const handleView = () => {
-        updateNote(vehicle);
-        setShowViewNote(true);
-    }
-
-    const handleArchive = () => {
-        const notes = JSON.parse(localStorage.getItem("notes"))
-        const index = notes.findIndex(storagedNote => storagedNote.id === vehicle.id)    
-        notes[index].isArchived = true; 
-        localStorage.setItem("notes", JSON.stringify(notes));
-        archive();
-    }
-
-    
-    const handleEdit = () => {
-        updateNote(vehicle);
-        setEditNote(true);
-        setShowCreateNote(true);
+      const handleEdit = () => {
+        setShowEditVehicle(true);
     }
 
     const handleDelete = () => {
@@ -40,15 +17,25 @@ const VehicleCard = ({ vehicle }) => {
 
     return (
         <>
-            <CreateNote showCreateNote={showCreateNote} setShowCreateNote={setShowCreateNote} editNote={editNote} />
-            <ViewNote showViewNote={showViewNote} setShowViewNote={setShowViewNote} />
-            <div className= {s.noteCard}>
-                <FaStickyNote className={s.stickyNote} onClick={handleView}/>
-                <div className={s.title}>{vehicle.type}</div>
-                <div className={s.date}>{`Last updated: ${vehicle.driverId}`}</div>
+            <EditVehicle showEditVehicle={showEditVehicle} setShowEditVehicle={setShowEditVehicle} vehicle={vehicle} />
+            <div className= {s.vehicleCard}>
+                <div className= {s.vehicleImage}>
+                    {{
+                        bycycle: <img src={require(`../../utils/img/vehicles/bike.jpg`)} alt={'vehicle'}></img>,
+                        motorcycle: <img src={require(`../../utils/img/vehicles/motorcycle.jpg`)} alt={'vehicle'}></img>,
+                        car: <img src={require(`../../utils/img/vehicles/car.jpg`)} alt={'vehicle'}></img>,
+                        truck: <img src={require(`../../utils/img/vehicles/truck.jpg`)} alt={'vehicle'}></img>,
+                        van: <img src={require(`../../utils/img/vehicles/van.jpg`)} alt={'vehicle'}></img>,
+                    }[vehicle.type]}
+                </div>
+                <div className= {s.vehicleInfo}>
+                    <div className={s.title}>{`Type: ${vehicle.type}`}</div>
+                    <div className={s.date}>{`Color: ${vehicle.color}`}</div>
+                    <div className={s.date}>{`Plate: ${vehicle.plate}`}</div>
                 <div className={s.iconGrid}>
                     <FaPencilAlt onClick={handleEdit}/>
                     <FaRegTrashAlt onClick={handleDelete}/>
+                </div>
                 </div>
             </div>
         </>

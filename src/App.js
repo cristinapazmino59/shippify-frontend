@@ -2,7 +2,6 @@ import { Route, Routes } from 'react-router-dom';
 import Navbar from './Components/Navbar/Navbar';
 import Companies from './Components/Companies/Companies';
 import Vehicles from './Components/Vehicles/Vehicles';
-import ArchivedNotes from './Components/ArchivedNotes/ArchivedNotes';
 import './App.css';
 
 function App() {

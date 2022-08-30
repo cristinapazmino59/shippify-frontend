@@ -1,29 +1,27 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Formik, Field, Form } from "formik";
 import VehicleCard from '../../Commons/VehicleCard/VehicleCard';
-import CreateNote from '../CreateNote/CreateNote';
-import find from '../../hooks/find';
+import CreateVehicle from '../CreateVehicle/CreateVehicle';
+import { find }  from '../../hooks/methods';
 import s from './Vehicles.module.css';
 
 const Vehicles = () => {
     const [ vehicles, setVehicles ] = useState([]);
-    const [ showCreateNote, setShowCreateNote ] = useState(false);
-
+    const [ showCreateVehicle, setShowCreateVehicle ] = useState(false);
 
     useEffect(() => {
         find(`/vehicles`)
         .then(vehiclesArr => setVehicles(vehiclesArr))
         .catch(err => console.log(err));
-    }, []); 
-    console.log(vehicles)
-
+    }, [vehicles]); 
+    
     const handleClick = () => {
-        setShowCreateNote(true)};
+        setShowCreateVehicle(true)
+    };
     
     return (
         <>
-            <CreateNote showCreateNote={showCreateNote} setShowCreateNote={setShowCreateNote}/>
+            <CreateVehicle showCreateVehicle={showCreateVehicle} setShowCreateVehicle={setShowCreateVehicle}/>
             <div className={s.container}>
                 <h1 className={s.title}>
                     Our vehicles
@@ -42,7 +40,7 @@ const Vehicles = () => {
                 ? <ul>
                     {vehicles.map((vehicle, index) => <VehicleCard key={index} vehicle={vehicle}/>)}
                    </ul>
-                : <div className={s.noNotesMessage}>Thera are no vehicles yet</div>
+                : <div className={s.noNotesMessage}>There are no vehicles yet</div>
                 }
 
             </div>

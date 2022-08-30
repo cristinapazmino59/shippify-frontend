@@ -6,7 +6,6 @@
     left: 0;
     height: 100vh;
     width: 100vw;
-    transition: all .5s;
 }
 
 .modalContainer {
@@ -14,22 +13,29 @@
     display: flex ;
     align-items: center;
     justify-content: center;
-    max-width: 500px;
+    max-width: 700px;
     margin: 0 auto;
     border-radius: 10px;
 }
 
 .formContainer {
-    width: 70%;
-    padding: 10%;
-    border-radius: 3%;
+    width: 100%;
+    padding: 5% 12% 5% 6%;
     border-style: solid 1px grey;
     color: var(--mainColor);
     font-size: 1.5em;
 }
 
-.form {
-    width: 100%;
+.gridContainer {
+    display: grid;
+    grid-template-columns: 20% 80%;
+    grid-template-rows: auto;
+    column-gap: 5%;
+}
+
+.title {
+    font-size: 2em;
+    text-align: center;
 }
 
 .input {
@@ -37,13 +43,17 @@
     height: 2em;
     font-size: smaller;
     padding-bottom: 2%;
+    margin-bottom: 3%;
 }
 
-.error {
-    color: red;
-    font-size: 0.6em;
+.subGridContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 5%;
+    grid-template-areas:
+    " . area2 area3"
 }
-  
+
 .button {
     height: 3em;
     width: 100%;
@@ -52,8 +62,29 @@
     background: var(--buttonBackgroundColor);
     font-family: var(--generalFont);
     color: var(--buttonFontColor);
-    font-weight: bolder;
     font-size: large;
-    letter-spacing: .1em;
-    margin-top: 5%;
+    font-weight: bolder;
+    margin-top: 20%;
+}
+
+.button:hover {
+    cursor: pointer;
+    background: white;
+    color: var(--buttonBackgroundColor);
+    border: solid 1px;
+}
+
+.create{
+    margin-left: 50%;
+    grid-area: area2;
+}
+
+.cancel{
+    margin-left: 0;
+    grid-area: area3;
+}
+
+.error {
+    color: red;
+    font-size: 0.7em;
 }

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Formik, Field, Form } from "formik";
 import NoteCard from '../../Commons/VehicleCard/VehicleCard';
-import CreateNote from '../CreateNote/CreateNote';
+import CreateVehicle from '../CreateVehicle/CreateVehicle';
 import s from './Companies.module.css';
 
 const Companies = () => {
@@ -23,7 +23,7 @@ const Companies = () => {
     
     return (
         <>
-            <CreateNote showCreateNote={showCreateNote} setShowCreateNote={setShowCreateNote}/>
+            <CreateVehicle showCreateVehicle={showCreateNote} setShowCreateNote={setShowCreateNote}/>
             <div className={s.container}>
                 <h1 className={s.title}>
                     Our companies
