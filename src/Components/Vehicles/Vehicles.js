@@ -8,15 +8,10 @@ import s from './Vehicles.module.css';
 
 const Vehicles = () => {
     const [ vehicles, setVehicles ] = useState([]);
-    const { isFindAction, isFind, toggleAction } = useContext(ActionContext);
+    const { isFind, toggleAction, driver } = useContext(ActionContext);
     const [ showFindDriver, setShowFindDriver ] = useState(false);
+    let path = ``;
 
-    useEffect(() => {
-        find(`/vehicles`)
-        .then(vehiclesArr => setVehicles(vehiclesArr))
-        .catch(err => console.log(err));
-    }, [vehicles]); 
-    
     const handleCreate= () => {
         setShowFindDriver(true);
     };
@@ -26,6 +21,20 @@ const Vehicles = () => {
         setShowFindDriver(true);
     };
 
+    if (isFind) {
+        path = driver ? `/vehicles/${driver.id}` : ``
+    } else {
+        path = `/vehicles`; 
+    }
+
+
+    useEffect(() => {
+        find(path)
+            .then(vehiclesArr => {
+                setVehicles(vehiclesArr)})
+            .catch(err => console.log(err));
+   }, [vehicles]); 
+    
     
     return (
         <>
@@ -47,6 +56,7 @@ const Vehicles = () => {
                    </ul>
                 : <div className={s.noVehiclesMessage}>There are no vehicles yet</div>
                 }
+
 
             </div>
         </>

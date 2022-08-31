@@ -21,7 +21,7 @@ const VehicleCard = ({ vehicle }) => {
             <EditVehicle showEditVehicle={showEditVehicle} setShowEditVehicle={setShowEditVehicle} vehicle={vehicle} />
             <div className= {s.vehicleCard}>
                 {{
-                    bycycle: <img className= {s.vehicleImage} src={require(`../../utils/img/vehicles/bike.jpg`)} alt={'vehicle'}></img>,
+                    bycycle: <img className= {s.vehicleImage} src={require(`../../utils/img/vehicles/bicycle.jpg`)} alt={'vehicle'}></img>,
                     motorcycle: <img className= {s.vehicleImage} src={require(`../../utils/img/vehicles/moto.jpg`)} alt={'vehicle'}></img>,
                     car: <img className= {s.vehicleImage} src={require(`../../utils/img/vehicles/car.jpg`)} alt={'vehicle'}></img>,
                     truck: <img className= {s.vehicleImage} src={require(`../../utils/img/vehicles/truck.jpg`)} alt={'vehicle'}></img>,
