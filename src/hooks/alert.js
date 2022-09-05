@@ -21,6 +21,16 @@ export function create(){
   })
 }
 
+export function createDriver(){
+  Swal.fire({
+    position: 'center',
+    icon: 'success',
+    title: 'Driver has been created',
+    showConfirmButton: false,
+    timer: 1500
+  })
+}
+
 export function eliminate(vehicle){
   Swal.fire({
     position: 'center',
